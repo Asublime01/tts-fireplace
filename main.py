@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 from elevenlabs.client import ElevenLabs
 from elevenlabs import VoiceSettings
-from playsound import playsound
+import pygame
+import time
 
 # Initialize ElevenLabs client
 elevenlabs = ElevenLabs(
@@ -41,7 +42,9 @@ def receive_data():
         f.write(audio_bytes)
 
     # Play the audio
-    playsound('output.mp3')
+    pygame.mixer.init()
+    pygame.mixer.music.load("output.mp3")
+    pygame.mixer.music.play()
 
     return jsonify({"status": "success", "message": message})
 

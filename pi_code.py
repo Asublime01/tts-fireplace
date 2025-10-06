@@ -1,15 +1,19 @@
 import requests
 import json
+import sys
 
 # API endpoint
-url = "http://192.168.110.112:5000"
+url = "http://192.168.110.19:5000"
+
+
 
 # Data to be sent (in JSON format)
 payload = {
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "message": "Hello API!"
+    "message": " "
 }
+if len(sys.argv) > 1:
+    payload['message'] = str(sys.argv[1])
+    print(f"New message: {sys.argv[1]}")
 
 # Request headers
 headers = {
