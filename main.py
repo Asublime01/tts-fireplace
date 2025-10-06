@@ -3,6 +3,12 @@ from elevenlabs.client import ElevenLabs
 from elevenlabs import VoiceSettings
 import pygame
 import time
+import RPi.GPIO as GPIO
+
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(13, GPIO.IN)
 
 # Initialize ElevenLabs client
 elevenlabs = ElevenLabs(
@@ -15,7 +21,10 @@ app = Flask(__name__)
 def receive_data():
     if not request.is_json:
         return jsonify({"error": "Invalid JSON"}), 400
-
+    
+    def replayMessage():
+        #GO TO raspberry pi hq button callback and finish the main script, publish it to repo.
+        pass
     data = request.get_json()
     print(f"Received data: {data}")
 
