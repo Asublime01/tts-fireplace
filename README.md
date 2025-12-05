@@ -29,3 +29,21 @@ Inside **`lockButtons.py`**, look for a line containing:
 ```python
 os.system("python3 pi_code.py <your message here>")
 ```
+
+## Requirements
+
+- Raspberry Pi (any model with audio output)
+- External speaker
+- Python 3
+- A TTS engine such as:
+  - gTTS
+  - pyttsx3
+  - or another library supported by your system
+  - I used Eleven Labs' API
+- (Optional) A physical button for replay
+- Basic wiring if using hardware triggers
+
+## 🤝 Contributions
+
+Contributions and improvements are welcome!  
+If you adapt this project for your own interactive TTS device, feel free to submit a pull request or open an issue.
