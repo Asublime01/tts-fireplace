@@ -1,20 +1,31 @@
-# Fireplace-Documentation
+# 🔥 TTS Fireplace
 
+A Raspberry Pi-powered text-to-speech system that plays spoken audio messages when triggered by external events (e.g., puzzles in an escape room). Messages are generated on demand using TTS and can also be replayed using a physical button.
 
-This piece of hardware / software uses Text-to-Speech (TTS) software, which can
-take written text and turn it into spoken audio. The fireplace is connected to a speaker so
-players hear the voice out loud. When another puzzle in the escape room is solved, the
-computer running that puzzle sends a short message to the fireplace’s computer. The fireplace
-software takes this message, converts it into an audio file using TTS, and then plays the audio
-file over the speaker for the contestants to hear. This audio message is then stored on the Raspberry Pi and can be replayed if the button is pressed.
+This project can be adapted for **escape rooms**, **interactive art installations**, **smart-home effects**, or anyone who wants to trigger TTS audio from Python scripts.
 
+---
 
-## How to Change the Message
-1. In **lockButtons.py** locate the line of code that has *"os.system("")"* mentioned
-2. This line contains a command similar or the same as ```python3 pi_code.py [insert new message here]```
-3. The pi_code.py program takes a command line argument to change the puzzle completion message to something else, so all you have to do is insert your own message in the ```[insert new message here] ``` location.
-4. The os.system function can be called anywhere in the *lockButtons.py* script to make the fireplace say something or give a hint. **All you have to do is change the message**
+## 💡 How It Works
 
-## How To Run
-Unplug and plug in the fireplace raspberry pi (It's code runs on startup over and over again until it looses power)
-Run ```os.system("python3 pi_code.py insert_message_here")``` anywhere you would like to change the message in **lockButtons.py** 
+This system listens for short text messages sent from another device (such as a puzzle controller). When a message arrives:
+
+1. The message is passed to a Python script (`pi_code.py`) via a command-line argument.  
+2. `pi_code.py` converts the text to audio using Text-to-Speech (TTS).  
+3. The audio file is saved locally on the Raspberry Pi.  
+4. The file plays automatically through a connected speaker.  
+5. A physical button on the fireplace can replay the most recent message at any time.
+
+The result is a dynamic “talking fireplace” that speaks different lines depending on puzzle progress or triggers you define.
+
+---
+
+## 📝 Changing the Spoken Message
+
+If you're integrating this into an escape room or other system, you can trigger the fireplace to speak any text you choose.
+
+Inside **`lockButtons.py`**, look for a line containing:
+
+```python
+os.system("python3 pi_code.py <your message here>")
+```
